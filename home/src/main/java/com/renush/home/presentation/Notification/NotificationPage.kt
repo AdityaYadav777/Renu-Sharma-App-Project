@@ -58,7 +58,6 @@ fun MyTopAppBar(){
 
 @Composable
 fun MainScreen(modifier: Modifier) {
-
     Column(modifier = modifier.fillMaxSize(), verticalArrangement = Arrangement.Center, horizontalAlignment = Alignment.CenterHorizontally) {
 
         Text("No Notification")

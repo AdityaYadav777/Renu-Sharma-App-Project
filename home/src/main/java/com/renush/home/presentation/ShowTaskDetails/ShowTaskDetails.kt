@@ -72,10 +72,3 @@ fun MainScreen(modifier: Modifier) {
 
 
 
-@Preview
-@Composable
-fun Preview(){
-
-    ShowTaskDetails(rememberNavController())
-
-}

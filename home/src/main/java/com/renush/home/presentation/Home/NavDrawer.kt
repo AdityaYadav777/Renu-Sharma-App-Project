@@ -17,18 +17,16 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.painterResource
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.navigation.NavHostController
 import com.renush.home.R
-import com.renush.home.Routes.Navigation
+import com.renush.home.Routes.Routes
 import kotlinx.coroutines.launch
 
 
 @OptIn(ExperimentalMaterial3Api::class)
-@Preview
 @Composable
-fun NavDrawer() {
-
+fun Home(navController: NavHostController) {
     val scope = rememberCoroutineScope()
     val drawerState = rememberDrawerState(DrawerValue.Closed)
     ModalNavigationDrawer(drawerContent = {
@@ -56,13 +54,13 @@ fun NavDrawer() {
                 actions = {
                     Row(modifier = Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.End){
                         Icon(painter = painterResource(R.drawable.notify), contentDescription = null, modifier = Modifier.size(30.dp).padding(end = 8.dp).clickable {
-
+                                navController.navigate(Routes.NotificationPage.Routes)
                         })
                     }
                 }
             )
         }) { innerPadding ->
-            Navigation(Modifier.padding(innerPadding))
+           MainHome(Modifier.padding(innerPadding),navController)
         }
     }
 }

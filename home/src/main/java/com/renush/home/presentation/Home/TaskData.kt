@@ -1,6 +1,5 @@
 package com.renush.home.presentation.Home
 
-import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -23,11 +22,15 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
+import androidx.compose.ui.draw.paint
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.renush.home.Models.TaskDataModel
+import com.renush.home.R
 
 @Composable
 fun TaskData() {
@@ -45,18 +48,17 @@ fun TaskData() {
 
 @Composable
 fun ShowData(taskDataModel: TaskDataModel) {
-    Card (modifier = Modifier.fillMaxWidth().padding(14.dp).height(80.dp), colors = CardDefaults.cardColors(
-        Color.LightGray)){
+    Card (modifier = Modifier.fillMaxWidth().padding(14.dp).height(80.dp), colors = CardDefaults.cardColors(Color.White), elevation = CardDefaults.cardElevation(7.dp)){
 
 
         Row {
 
             Box(
-                modifier = Modifier.size(80.dp).clip(RoundedCornerShape(20))
-                    .background(Color.Blue.copy(alpha = 0.7f)), contentAlignment = Alignment.Center
+                modifier = Modifier.size(80.dp).clip(RoundedCornerShape(topEnd = 10.dp, bottomEnd = 10.dp))
+                    .paint(painter = painterResource( R.drawable.taskbg), contentScale = ContentScale.FillBounds), contentAlignment = Alignment.Center
             ) {
                 Icon(
-                    imageVector = Icons.Default.DateRange,
+                    painter = painterResource(R.drawable.task),
                     contentDescription = null,
                     tint = Color.White,
                     modifier = Modifier.size(39.dp)
@@ -64,9 +66,9 @@ fun ShowData(taskDataModel: TaskDataModel) {
             }
 
             Column( modifier = Modifier.padding(start = 14.dp, top = 8.dp)) {
-                Text(taskDataModel.taskName, fontSize = 19.sp, fontWeight = FontWeight.Bold)
+                Text(taskDataModel.taskName, color = Color.Black, fontSize = 19.sp, fontWeight = FontWeight.Bold)
                 Spacer(Modifier.height(4.dp))
-                Text(taskDataModel.taskSubmissionDate, fontSize = 13.sp)
+                Text(taskDataModel.taskSubmissionDate, color = Color.Black, fontSize = 13.sp)
 
             }
 
@@ -85,3 +87,4 @@ fun getTaskData():List<TaskDataModel>{
         TaskDataModel("Mobile App Ui Design","submission date 22 Nov,2024","Pending")
     )
 }
+

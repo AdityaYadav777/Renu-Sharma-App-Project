@@ -34,24 +34,25 @@ import com.renush.home.Routes.Routes
 
 
 
-
-
-
 @Composable
-fun Home(modifier: Modifier, navController: NavHostController) {
+fun MainHome(modifier: Modifier, navController: NavHostController) {
 
     Column(modifier = modifier.fillMaxSize()) {
 
-        Box(modifier = Modifier.fillMaxWidth().height(160.dp).padding(8.dp).clip(RoundedCornerShape(20)).paint(painter = painterResource(
+        Box(modifier = Modifier.fillMaxWidth().height(180.dp).padding(8.dp).clip(RoundedCornerShape(20)).paint(painter = painterResource(
             R.drawable.coursebg), contentScale = ContentScale.FillBounds)){
 
                 Column(modifier = Modifier.padding(20.dp)) {
                 Text("Ui/UX Design Internship", fontSize = 22.sp, color = Color.White, fontWeight = FontWeight.Bold)
                 Text("3 Month", fontSize = 19.sp, color = Color.White)
                 Spacer(Modifier.height(12.dp))
-                Text("Progress 100%", color = Color.White)
-                Spacer(Modifier.height(6.dp))
-                LinearProgressIndicator(trackColor = Color.White, color = Color.White)
+
+                Column (modifier=Modifier.fillMaxSize().padding(12.dp), verticalArrangement = Arrangement.Bottom){
+                    Text("Progress 100%", color = Color.White)
+                    Spacer(Modifier.height(6.dp))
+                    LinearProgressIndicator(trackColor = Color.White, color = Color.White)
+                }
+
 
             }
 
